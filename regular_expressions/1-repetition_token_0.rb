@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
+# A Ruby script to match strings
 
-regex = /hb+tn/
-matches = ARGV[0].scan(regex)
-puts matches.join
+input_string = ARGV[0]
+regex_pattern = /^hbtt*n$/
+
+puts input_string if input_string.match?(regex_pattern)
