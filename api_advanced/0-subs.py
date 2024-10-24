@@ -1,32 +1,16 @@
 #!/usr/bin/python3
-"""
-This module queries the Reddit API.
-"""
-
+"""Function to query subscribers on a given Reddit subreddit."""
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """
-    Queries the Reddit API.
-    """
-    url = https://www.reddit.com/r/{subreddit}/about.json
-    headers = {'User-Agent': 'my-app/0.0.1'}
-
-    try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        if response.status_code == 200:
-            data = response.json()
-            # Return the number of subscribers or 0 if the key is missing
-            return data['data'].get('subscribers', 0)
-        else:
-            # Return 0 if the subreddit is invalid (non-200 response)
-            return 0
-    except requests.RequestException:
-        # Return 0 in case of network-related issues
+    """Return the total number of subscribers on a given subreddit."""
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    }
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 404:
         return 0
-
-
-if __name__ == "__main__":
-    # Testing can be done using the 0-main.py script
-    pass
+    results = response.json().get("data")
+    return results.get("subscribers")
