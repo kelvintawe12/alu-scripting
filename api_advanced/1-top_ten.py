@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-This module queries the Reddit API and prints the titles of the first
-10 hot posts for a given subreddit. If the subreddit is invalid, it prints None.
+This module queries the Reddit APi
 """
 
 import requests
@@ -9,14 +8,7 @@ import requests
 
 def top_ten(subreddit):
     """
-    Queries the Reddit API and prints the titles of the first 10 hot posts
-    listed for a given subreddit. If not a valid subreddit, prints None.
-
-    Args:
-        subreddit (str): The subreddit to search for
-
-    Returns:
-        None
+    Queries the Reddit API and prints the titles
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
     headers = {'User-Agent': 'my-app/0.0.1'}
