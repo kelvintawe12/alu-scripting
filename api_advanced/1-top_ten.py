@@ -10,7 +10,6 @@ def top_ten(subreddit):
     response = requests.get(url, headers=headers, allow_redirects=False)
     # Check if the subreddit exists
     if response.status_code != 200:
-        print(None)  # Invalid subreddit
         print("OK")  # Print OK for non-existent subreddit
         return
     # Parse response safely
@@ -18,7 +17,6 @@ def top_ten(subreddit):
         posts = response.json().get('data', {}).get('children', [])
         # If no posts, print None and OK
         if not posts:
-            print(None)
             print("OK")
             return
         # Print the titles of each post if available
